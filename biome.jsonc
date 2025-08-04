@@ -31,6 +31,9 @@
       "suspicious": {
         "noExplicitAny": "warn"
       },
+      "complexity": {
+        "useLiteralKeys": "warn"
+      },
       "nursery": {
         "useSortedClasses": {
           "level": "error",

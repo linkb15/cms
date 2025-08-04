@@ -5,29 +5,30 @@ import postcss from 'rollup-plugin-postcss';
 import tailwindcss from '@tailwindcss/postcss';
 
 export default defineConfig({
-  entry: ['src/**/*'],
+  entry: ['src/index.ts'],
 
   // clean: true,
-  dts: {
-    ignoreErrors: true,
-    include: ['src/**/*'],
-  },
+  dts: true,
 
   sourcemap: true,
 
-  format: 'esm',
+  format: ['cjs', 'esm'],
   treeshake: true,
+
   outDir: './dist',
+  platform: 'browser',
 
   alias: {
     '@': path.resolve(__dirname, './src'),
   },
 
+  external: ['react', 'react-dom'],
+
   plugins: [
     // postcss({
     //   extract: true,
     //   plugins: [tailwindcss],
-    // }),
+    // }) as any,
     paraglideRolldownPlugin({
       project: './project.inlang',
       outdir: './src/paraglide',
